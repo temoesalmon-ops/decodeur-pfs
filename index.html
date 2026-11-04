@@ -60,19 +60,19 @@ dd{margin:0}
 </div>
 
 <div id="out" class="hid">
-<h2>Dossiers (localisateurs)</h2>
+<h2>Dossiers (PNRs)</h2>
 <div class="row">
-<input type="search" id="q" placeholder="Filtrer par nom ou localisateur" aria-label="Filtrer">
+<input type="search" id="q" placeholder="Filtrer par nom ou PNR" aria-label="Filtrer">
 <select id="fd" aria-label="Destination"></select>
 <select id="fs" aria-label="Statut"></select>
 </div>
 <div class="row">
-<button id="cp1">Copier les localisateurs</button>
+<button id="cp1">Copier les PNRs</button>
 <button id="cp2">Copier le tableau (Excel)</button>
 <span class="msg" id="n"></span>
 </div>
 <div class="scroll"><table>
-<thead><tr><th>Dest.</th><th>Localisateur</th><th>Pax</th><th>Passagers</th><th>Cabine</th><th>Statut</th></tr></thead>
+<thead><tr><th>Dest.</th><th>PNR</th><th>Pax</th><th>Passagers</th><th>Cabine</th><th>Statut</th></tr></thead>
 <tbody id="tb"></tbody></table></div>
 <h2>Statuts présents dans ce PFS</h2>
 <dl id="defs"></dl>
@@ -275,7 +275,7 @@ $("clr").onclick=function(){$("in").value="";$("volbox").classList.add("hid");$(
 $("q").oninput=table;$("fd").onchange=table;$("fs").onchange=table;
 $("cp1").onclick=function(){copy(lastView.map(function(g){return g.pnr}).join("\n"),$("cp1"))};
 $("cp2").onclick=function(){
-  var h=["Destination","Localisateur","Nb pax","Passagers","Cabine","Statut"].join("\t");
+  var h=["Destination","PNR","Nb pax","Passagers","Cabine","Statut"].join("\t");
   copy([h].concat(lastView.map(function(g){return [g.dest,g.pnr,g.pax.length,g.pax.map(function(p){return p.sn+" "+p.fn}).join(" / "),Object.keys(g.cabins).join(","),statusOf(g).join(",")].join("\t")})).join("\n"),$("cp2"));
 };
 $("file").onchange=function(e){
